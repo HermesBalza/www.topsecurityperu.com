@@ -11,7 +11,13 @@ export default function Footer() {
                 <div className={styles.grid}>
                     {/* Brand & About */}
                     <div className={styles.brandCol}>
-                        <h2 className={styles.logoText}>TOP <span className="text-secondary">SECURITY</span> PERÚ</h2>
+                        <div className={styles.logoContainer} style={{ marginBottom: '1rem' }}>
+                            <img
+                                src="/images/brand/Logo Top Security Perú (blanco).png"
+                                alt="Top Security Perú"
+                                style={{ height: '40px', width: 'auto' }}
+                            />
+                        </div>
                         <p className={styles.description}>
                             Especialistas en soluciones de seguridad electrónica y vigilancia privada de alto nivel.
                             Protegemos lo que más valoras con tecnología de vanguardia.

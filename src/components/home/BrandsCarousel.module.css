@@ -1,0 +1,87 @@
+.section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+    /* Fondo claro sutil para separar */
+    overflow: hidden;
+}
+
+.title {
+    text-align: center;
+    font-family: var(--font-heading);
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.2em;
+}
+
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Máscara de desvanecimiento a los lados */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.track {
+    display: flex;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+}
+
+.brandItem {
+    padding: 0 3rem;
+    /* Espacio entre logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageWrapper {
+    width: 150px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.imageWrapper:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* Mueve la mitad del track (la primera copia) */
+}
+
+/* Dark Mode support */
+@media (prefers-color-scheme: dark) {
+    .section {
+        background: #111;
+    }
+
+    .title {
+        color: #888;
+    }
+
+    .imageWrapper {
+        filter: grayscale(100%) invert(1) brightness(2);
+        /* Ajuste para logos oscuros en fondo oscuro */
+    }
+
+    .imageWrapper:hover {
+        filter: none;
+        /* O color original si es visible en oscuro */
+    }
+}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Roboto } from "next/font/google";
+import { Bebas_Neue, Montserrat } from "next/font/google";
 import Link from 'next/link';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -14,10 +14,10 @@ const bebasNeue = Bebas_Neue({
   display: 'swap',
 });
 
-const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
+const montserrat = Montserrat({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-roboto",
+  variable: "--font-montserrat",
   display: 'swap',
 });
 
@@ -49,8 +49,9 @@ export const metadata: Metadata = {
     creator: '@topsecurityperu'
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png'
+    icon: '/images/brand/Isotipo.png',
+    shortcut: '/images/brand/Isotipo.png',
+    apple: '/images/brand/Isotipo.png'
   }
 };
 
@@ -61,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${bebasNeue.variable} ${roboto.variable}`}>
+      <body className={`${bebasNeue.variable} ${montserrat.variable} ${montserrat.className}`}>
         <CartProvider>
           <Navbar />
           {children}

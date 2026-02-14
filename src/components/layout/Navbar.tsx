@@ -16,7 +16,11 @@ export default function Navbar() {
             <div className={`container ${styles.container}`}>
                 <div className={styles.logo}>
                     <Link href="/">
-                        TOP <span className={styles.logoHighlight}>SECURITY</span> PERÚ
+                        <img
+                            src="/images/brand/Logo Top Security Perú.png"
+                            alt="Top Security Perú"
+                            style={{ height: '50px', width: 'auto' }} // Ajuste directo para evitar distorsión
+                        />
                     </Link>
                 </div>
 

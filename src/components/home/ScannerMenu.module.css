@@ -1,0 +1,226 @@
+/* --- Variables Locales --- */
+.triggerBtn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 50;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px rgba(181, 18, 19, 0.3);
+    padding: 0;
+}
+
+.triggerBtn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 0 30px rgba(181, 18, 19, 0.8);
+}
+
+.triggerBtn.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+.triggerText {
+    display: none;
+    /* Ocultamos el texto para diseño minimalista */
+}
+
+.triggerIcon {
+    font-size: 1.5rem;
+}
+
+/* --- OVERLAY PRINCIPAL --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* --- BOTÓN CERRAR --- */
+.closeBtn {
+    position: absolute;
+    top: var(--space-xl);
+    right: var(--space-xl);
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-heading);
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+    z-index: 100;
+}
+
+.closeIcon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.closeText {
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.closeBtn:hover {
+    color: var(--color-primary);
+}
+
+/* --- NAVEGACIÓN --- */
+.scannerNav {
+    width: 100%;
+    max-width: 1200px;
+    padding: var(--space-xl);
+    z-index: 10;
+}
+
+.scannerList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: center;
+    /* Centrado para impacto */
+}
+
+/* --- ITEMS Y ANIMACIONES --- */
+.scannerItem {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+}
+
+/* Staggered Animation cuando está abierto */
+.overlay.open .scannerItem {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(0.1s * var(--i));
+    /* Retraso basado en índice */
+}
+
+.scannerLink {
+    text-decoration: none;
+    display: inline-flex;
+    /* Para ajustar al contenido */
+    align-items: baseline;
+    gap: var(--space-md);
+    position: relative;
+    padding: var(--space-sm) var(--space-xl);
+    overflow: hidden;
+}
+
+.scannerNumber {
+    font-family: 'Courier New', monospace;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.scannerText {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    /* Gigante */
+    color: rgba(255, 255, 255, 0.1);
+    /* Casi invisible, 'fantasma' */
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    /* Solo borde */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+}
+
+/* Hover Effect: Relleno Sólido + Glitch */
+.scannerLink:hover .scannerText {
+    color: var(--color-white);
+    -webkit-text-stroke: 0;
+    text-shadow: 4px 4px 0px var(--color-primary);
+    transform: scale(1.02) skewX(-5deg);
+}
+
+/* Scan Line (Haz de luz horizontal al hacer hover) */
+.scanLine {
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 200%;
+    height: 2px;
+    background: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
+    transition: none;
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
+.scannerLink:hover .scanLine {
+    animation: scanSwipe 0.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    opacity: 1;
+}
+
+@keyframes scanSwipe {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* --- GRID DECORATIVO DE FONDO --- */
+.gridOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 1;
+    pointer-events: none;
+}

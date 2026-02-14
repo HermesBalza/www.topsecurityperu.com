@@ -26,8 +26,7 @@
   /* Typography */
   --font-heading: var(--font-bebas), sans-serif;
   /* Bebas Neue */
-  --font-body: var(--font-roboto), sans-serif;
-  /* Roboto */
+  --font-body: var(--font-montserrat), sans-serif;
 
   /* Spacing System (8pt grid) */
   --space-xs: 0.25rem;
@@ -69,12 +68,34 @@ body {
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-dark);
-  /* Dark Mode por defecto para Seguridad */
-  color: var(--color-white);
+  font-family: var(--font-body), 'Montserrat', sans-serif;
+  background-color: var(--color-white);
+  /* Fondo blanco solicitado */
+  color: var(--color-dark);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  /* Para el watermark */
+}
+
+/* Watermark Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48vh;
+  /* Reducido 20% (antes 60vh) */
+  height: 48vh;
+  background-image: url('/images/brand/Isotipo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.1;
+  /* Opacidad final al 10% */
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Tipografía Corporativa */

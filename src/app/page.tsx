@@ -1,62 +1,111 @@
+import ScannerMenu from '@/components/home/ScannerMenu';
 import Link from 'next/link';
 import styles from './page.module.css';
-import { getProducts } from '@/lib/woocommerce';
+import { getProducts, getCategories } from '@/lib/woocommerce';
+// import { getProducts } from '@/lib/woocommerce'; // REMOVED DUPLICATE
 import ProductCard from '@/components/shop/ProductCard';
+import Image from 'next/image';
+import HeroSlider from '@/components/home/HeroSlider'; // Importamos el slider
+import ProductCategoryRow from '@/components/home/ProductCategoryRow';
+import BrandsCarousel from '@/components/home/BrandsCarousel';
+
+async function getFeaturedProducts() {
+  // Simulación de carga de datos
+  return [
+    {
+      id: 1,
+      name: 'Sistema de Cámaras IP 4K',
+      price: 1299.00,
+      image: '/images/products/camera-system.jpg',
+      category: 'CCTV'
+    },
+    // ... otros productos
+  ];
+}
+
+
 
 export default async function Home() {
-  // Fetch real products at build/request time
-  const fetchedProducts = await getProducts(4); // Get top 4 products
-  const products = Array.isArray(fetchedProducts) ? fetchedProducts : [];
+  // Debug Categories
+  const categories = await getCategories();
+  console.log('--- WOOCOMMERCE CATEGORIES ---');
+  categories.forEach((c: any) => console.log(`${c.id}: ${c.name} (${c.slug})`));
+  console.log('------------------------------');
+
+  const products = []; // Placeholder temporal para evitar errores mientras depuramos
 
   return (
     <main>
+      {/* Hero Section */}
       <section className={styles.hero}>
-        <div className={styles.content}>
-          <h1 className={styles.title}>
-            SEGURIDAD DE <span className={styles.highlight}>ALTURA</span>
-          </h1>
-          <p className={styles.subtitle}>
-            Protegemos lo que más valoras con tecnología de vigilancia avanzada
-            y sistemas de control de última generación.
-          </p>
-          <div className={styles.ctaGroup}>
-            <Link href="/tienda" className="btn btn-primary">
-              Ver Productos
-            </Link>
-            <Link href="/contacto" className="btn btn-outline">
-              Solicitar Cotización
-            </Link>
-          </div>
+
+        {/* Fondo: Slider Automático 
+            Se coloca primero para que el z-index CSS lo maneje (o por orden natural si no se usa z-index)
+        */}
+        <HeroSlider />
+
+        <div className={styles.heroGrid}>
+
+          {/* Contenido Principal Centrado */}
+          {/* Contenido Principal ELIMINADO a petición del usuario para dejar solo el slider */}
+
+          {/* 
+              El Hero queda como un lienzo visual limpio.
+              La navegación se hace vía Navbar o el botón flotante del ScannerMenu.
+          */}
+
+          {/* Menú Overlay (Maneja su propia visibilidad y posición) */}
+          <ScannerMenu />
+
         </div>
       </section>
 
-      {/* Featured Products from WooCommerce */}
-      <section className="container" style={{ padding: '4rem 1rem' }}>
-        <h2 className="text-center" style={{ textAlign: 'center', marginBottom: '2rem' }}>PRODUCTOS DESTACADOS</h2>
+      {/* Secciones de Productos por Categoría */}
+      {/* Secciones de Productos por Categoría (Datos Reales) */}
+      {/* Secciones de Productos por Categoría (Datos Reales) */}
+      <div style={{ position: 'relative', zIndex: 1, paddingBottom: '4rem' }}>
 
-        {products.length > 0 ? (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-            gap: '2rem'
-          }}>
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={{
-                  id: String(product.id),
-                  name: product.name,
-                  price: parseFloat(product.price || '0'),
-                  image: product.images[0]?.src || '',
-                  category: product.categories[0]?.name || 'Seguridad'
-                }}
-              />
-            ))}
-          </div>
-        ) : (
-          <p style={{ textAlign: 'center', color: '#666' }}>Cargando catálogo...</p>
-        )}
-      </section>
+        {/* 1. Cámaras de Seguridad (Analog + IP + DVR + NVR) - Excluyendo WiFi (87) */}
+        <ProductCategoryRow
+          title="CÁMARAS DE SEGURIDAD"
+          categoryIds="80,78,81,79"
+          excludeIds="87"
+          limit={6}
+        />
+
+        {/* 2. Cámaras IP WiFi */}
+        <ProductCategoryRow
+          title="CÁMARAS IP WIFI"
+          categoryIds="87"
+          limit={6}
+        />
+
+        {/* 3. Controles de Acceso y/o Asistencia */}
+        <ProductCategoryRow
+          title="CONTROL DE ACCESO & ASISTENCIA"
+          categoryIds="82"
+          limit={6}
+        />
+
+        {/* 4. Alarmas */}
+        <ProductCategoryRow
+          title="SISTEMAS DE ALARMA"
+          categoryIds="85"
+          limit={6}
+        />
+
+        {/* 5. Videoporteros */}
+        <ProductCategoryRow
+          title="VIDEOPORTEROS"
+          categoryIds="86"
+          limit={6}
+        />
+
+      </div>
+
+      {/* Carrusel de Marcas Aliadas */}
+      <BrandsCarousel />
     </main>
   );
 }
+
