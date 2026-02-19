@@ -1,71 +1,169 @@
-.navbar {
-    position: sticky;
-    top: 0;
+/* --- General Header Structure --- */
+.header {
+    width: 100%;
+    position: relative;
     z-index: 1000;
-    background-color: rgba(5, 5, 5, 0.9);
-    /* Dark semi-transparent */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: var(--space-md) 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.container {
+/* --- 1. TOP BAR (Rojo) --- */
+.topBar {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.85rem;
+    padding: 8px 0;
+}
+
+.topBarContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo a {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    color: var(--color-white);
-    text-decoration: none;
-    letter-spacing: 0.05em;
+.socialIcons {
+    display: flex;
+    gap: 1rem;
 }
 
-.logoHighlight {
+.socialIcons a {
+    color: var(--color-white);
+    font-size: 1rem;
+    transition: color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.socialIcons a:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.contactInfo {
+    display: flex;
+    gap: 2rem;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+/* --- 2. MAIN HEADER (Blanco) --- */
+.mainHeader {
+    background-color: var(--color-white);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.mainHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Logo */
+.logo a {
+    display: block;
+    transition: transform 0.2s;
+}
+
+.logo a:hover {
+    transform: scale(1.02);
+}
+
+/* Search Bar "Pill Shape" */
+.searchBar {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 9999px;
+    /* Pill shape */
+    overflow: hidden;
+    height: 45px;
+    transition: border-color 0.3s;
+}
+
+.searchBar:focus-within {
+    border-color: var(--color-primary);
+}
+
+.searchInput {
+    flex: 1;
+    border: none;
+    padding: 0 1.5rem;
+    font-size: 0.95rem;
+    outline: none;
+    color: var(--color-dark);
+}
+
+.searchBtn {
+    background: none;
+    border: none;
+    padding: 0 1.5rem;
+    /* More padding since it's the only button */
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.searchBtn:hover {
     color: var(--color-primary);
 }
 
-.nav {
+/* User Actions */
+.userActions {
     display: flex;
     align-items: center;
-    gap: var(--space-lg);
+    gap: 1.5rem;
 }
 
-.link {
-    color: var(--color-gray-light);
-    text-decoration: none;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    transition: color 0.3s ease;
+
+.actionIcons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.link:hover {
+.iconBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+}
+
+.iconBtn:hover {
     color: var(--color-primary);
 }
 
 .cartBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
     background: none;
     border: none;
-    font-size: 1.2rem;
     cursor: pointer;
-    position: relative;
-    margin-right: 0.5rem;
-    transition: transform 0.2s;
 }
 
-.cartBtn:hover {
-    transform: scale(1.1);
+.cartIconWrapper {
+    position: relative;
+    font-size: 1.5rem;
+    color: var(--color-dark);
 }
 
 .badge {
     position: absolute;
-    top: -8px;
+    top: -5px;
     right: -8px;
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     color: white;
     font-size: 0.7rem;
     font-weight: bold;
@@ -75,4 +173,108 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.cartTotal {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+/* --- 3. BOTTOM NAV (Negro) --- */
+.bottomNav {
+    background-color: var(--color-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navContainer {
+    display: flex;
+    justify-content: flex-start;
+    /* Cambio a flex-start para acomodar el boton a la izquierda */
+    align-items: center;
+    gap: 3rem;
+}
+
+.menuTrigger {
+    background-color: var(--color-primary);
+    /* Rojo llamativo */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: background-color 0.3s;
+    height: 100%;
+    /* Llenar altura */
+}
+
+.menuTrigger:hover {
+    background-color: #d62f2f;
+    /* Rojo más claro */
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.navLinks a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.navLinks a:hover {
+    color: var(--color-primary);
+}
+
+/* Indicador de hover sutil */
+.navLinks a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s;
+}
+
+.navLinks a:hover::after {
+    width: 100%;
+}
+
+/* Responsive (Básico para que no rompa en mobile) */
+@media (max-width: 768px) {
+
+    .topBar,
+    .mainHeader .searchBar,
+    .mainHeader .userActions span,
+    .navLinks {
+        display: none;
+        /* Simplificación drástica temporal */
+    }
+
+    .mainHeaderContainer {
+        justify-content: space-between;
+    }
+
+    .bottomNav {
+        display: none;
+        /* TODO: Implementar Mobile Menu */
+    }
 }

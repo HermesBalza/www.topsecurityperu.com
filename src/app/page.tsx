@@ -1,4 +1,4 @@
-import ScannerMenu from '@/components/home/ScannerMenu';
+// import ScannerMenu from '@/components/home/ScannerMenu'; // REMOVED
 import Link from 'next/link';
 import styles from './page.module.css';
 import { getProducts, getCategories } from '@/lib/woocommerce';
@@ -6,8 +6,10 @@ import { getProducts, getCategories } from '@/lib/woocommerce';
 import ProductCard from '@/components/shop/ProductCard';
 import Image from 'next/image';
 import HeroSlider from '@/components/home/HeroSlider'; // Importamos el slider
+import QuickAccess from '@/components/home/QuickAccess';
 import ProductCategoryRow from '@/components/home/ProductCategoryRow';
 import BrandsCarousel from '@/components/home/BrandsCarousel';
+import BlogSection from '@/components/blog/BlogSection';
 
 async function getFeaturedProducts() {
   // Simulación de carga de datos
@@ -55,10 +57,13 @@ export default async function Home() {
           */}
 
           {/* Menú Overlay (Maneja su propia visibilidad y posición) */}
-          <ScannerMenu />
+          {/* Menú Overlay ELIMINADO a petición del usuario */}
 
         </div>
       </section>
+
+      {/* Sección Accesos Rápidos */}
+      <QuickAccess />
 
       {/* Secciones de Productos por Categoría */}
       {/* Secciones de Productos por Categoría (Datos Reales) */}
@@ -105,7 +110,10 @@ export default async function Home() {
 
       {/* Carrusel de Marcas Aliadas */}
       <BrandsCarousel />
+
+      {/* Sección de Blog (Últimas Noticias) */}
+      <BlogSection />
+
     </main>
   );
 }
-

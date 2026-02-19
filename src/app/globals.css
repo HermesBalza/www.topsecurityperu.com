@@ -3,17 +3,16 @@
 
   /* Primary: Deep Red (Marca principal) */
   --color-primary: #b51213;
-  /* Secondary: Dark Red/Orange Accent */
-  --color-secondary: #ef4634;
+  /* Secondary: Dark Red (Hover/Active) */
+  --color-primary-dark: #75191c;
 
   /* Neutrals */
   --color-dark: #15151d;
-  /* Background Principal (Dark Mode) */
-  --color-gray-dark: #333333;
-  /* Cards background */
-  --color-gray-med: #5b5b5b;
-  /* Secondary Text */
-  --color-gray-light: #a7a3a4;
+  /* Mantenemos este negro profundo para textos principales */
+  --color-gray-dark: #5b5b5b;
+  /* Gris Medio Oficial */
+  --color-gray-light: #a6a3a3;
+  /* Gris Claro Oficial */
   /* Borders / Inactive */
 
   --color-white: #ffffff;
@@ -181,7 +180,7 @@ a {
 }
 
 .btn-primary:hover {
-  background-color: #d11a1b;
+  background-color: var(--color-primary-dark);
   /* Un poco más claro */
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow);

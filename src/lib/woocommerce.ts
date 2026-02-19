@@ -25,6 +25,7 @@ export interface Product {
     categories: { id: number; name: string }[];
     permalink: string;
     stock_status: string;
+    sku?: string;
 }
 
 /**
