@@ -48,7 +48,7 @@ export default function ProductDetailClient({ product }: Props) {
                 <span style={{ margin: '0 0.5rem' }}>/</span>
                 <Link href="/tienda" style={{ textDecoration: 'none', color: 'inherit' }}>Tienda</Link>
                 <span style={{ margin: '0 0.5rem' }}>/</span>
-                <span style={{ color: 'var(--color-white)' }}>{product.name}</span>
+                <span style={{ color: 'var(--color-primary)' }}>{product.name}</span>
             </nav>
 
             <div className={styles.grid}>
