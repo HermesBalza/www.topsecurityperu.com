@@ -36,6 +36,7 @@ export async function generateMetadata(
 }
 
 import ProductDetailClient from '@/components/shop/ProductDetailClient';
+import ProductCategoryRow from '@/components/home/ProductCategoryRow';
 
 export default async function ProductPage({ params }: Props) {
     const { id } = await params;
@@ -45,5 +46,22 @@ export default async function ProductPage({ params }: Props) {
         notFound();
     }
 
-    return <ProductDetailClient product={product} />;
+    const categoryIds = product.categories?.map(c => c.id).join(',') || '';
+
+    return (
+        <div style={{ backgroundColor: 'var(--color-bg)' }}>
+            <ProductDetailClient product={product} />
+
+            {categoryIds && (
+                <div style={{ maxWidth: '1200px', margin: '4rem auto 2rem', padding: '0 1rem' }}>
+                    <ProductCategoryRow
+                        title="Productos Relacionados"
+                        categoryIds={categoryIds}
+                        excludeIds={product.id.toString()}
+                        limit={5}
+                    />
+                </div>
+            )}
+        </div>
+    );
 }

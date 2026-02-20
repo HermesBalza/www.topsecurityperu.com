@@ -38,9 +38,22 @@
 
 .grid {
     display: grid;
-    /* Ajustado a 180px/1.25rem para garantizar 6 items en pantallas 1366px (Standard Laptop) */
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    /* Mobile fallback */
     gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+        /* Estricto 5 columnas en una línea para Detalles de Producto */
+    }
 }
 
 /* Adaptación a modo oscuro si se implementa globalmente */

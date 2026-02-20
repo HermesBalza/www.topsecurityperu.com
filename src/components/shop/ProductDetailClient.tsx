@@ -144,7 +144,7 @@ export default function ProductDetailClient({ product }: Props) {
                     </div>
 
                     {/* Description Intro */}
-                    <div style={{ marginBottom: '2rem', color: 'var(--color-gray-light)', lineHeight: '1.6' }}>
+                    <div style={{ marginBottom: '2rem', color: '#333333', lineHeight: '1.6' }}>
                         <p>{stripHtml(product.short_description || product.description || '').slice(0, 250)}...</p>
                     </div>
 
