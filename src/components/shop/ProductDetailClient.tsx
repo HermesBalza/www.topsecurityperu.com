@@ -188,7 +188,7 @@ export default function ProductDetailClient({ product }: Props) {
                         </div>
                         <div className={styles.trustItem}>
                             <FaHeadset className={styles.trustIcon} />
-                            <span className={styles.trustText}>Soporte<br />Técnico</span>
+                            <span className={styles.trustText}>Delivery a<br />Todo Lima</span>
                         </div>
                     </div>
 

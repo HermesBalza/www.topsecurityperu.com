@@ -190,7 +190,7 @@
 
 .qtyLabel {
     font-size: 0.9rem;
-    color: var(--color-gray-light);
+    color: #333333;
     margin-right: 0.5rem;
 }
 
@@ -210,14 +210,15 @@
     justify-content: center;
     background: transparent;
     border: none;
-    color: var(--color-white);
+    color: #333333;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
     border-radius: var(--radius-sm);
 }
 
 .qtyBtn:hover {
     background: rgba(255, 255, 255, 0.1);
+    color: #dc2626;
 }
 
 .qtyValue {
@@ -242,7 +243,7 @@
 .btnPrimary {
     flex: 2;
     background: var(--color-primary);
-    color: var(--color-black);
+    color: #ffffff;
     padding: 1rem 2rem;
     border-radius: var(--radius-md);
     /* Consistent radius */
@@ -251,7 +252,7 @@
     letter-spacing: 0.05em;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s, color 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,14 +261,16 @@
 
 .btnPrimary:hover {
     transform: translateY(-2px);
+    background-color: #dc2626;
+    color: #ffffff;
     box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .btnSecondary {
     flex: 1;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: var(--color-white);
+    background: #1ea850;
+    border: none;
+    color: #ffffff;
     padding: 1rem 2rem;
     border-radius: var(--radius-md);
     font-weight: 600;
@@ -281,9 +284,10 @@
 }
 
 .btnSecondary:hover {
-    border-color: #25D366;
-    /* WhatsApp Green */
-    color: #25D366;
+    transform: translateY(-2px);
+    background-color: #25D366;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
 /* Trust Badges */
@@ -314,7 +318,7 @@
 
 .trustText {
     font-size: 0.8rem;
-    color: var(--color-gray-light);
+    color: #333333;
     line-height: 1.4;
 }
 
