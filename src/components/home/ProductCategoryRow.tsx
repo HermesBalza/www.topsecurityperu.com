@@ -50,6 +50,7 @@ export default async function ProductCategoryRow({ title, categoryIds, excludeId
                         product={{
                             id: String(product.id),
                             name: product.name,
+                            slug: product.slug,
                             price: product.price ? parseFloat(product.price) : 0,
                             image: product.images[0]?.src || '/images/placeholder.jpg', // Fallback image
                             category: product.categories[0]?.name || 'Producto'

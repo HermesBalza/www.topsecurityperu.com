@@ -16,6 +16,7 @@ function getAuthHeader() {
 export interface Product {
     id: number;
     name: string;
+    slug: string;
     price: string;
     regular_price: string;
     sale_price: string;
@@ -98,6 +99,42 @@ export async function getProductById(id: string): Promise<Product | null> {
         return data as Product;
     } catch (error) {
         console.error('Failed to fetch product:', error);
+        return null;
+    }
+}
+
+/**
+ * Fetch a single product by Slug
+ * @param slug Product slug
+ */
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+    try {
+        const url = `${WORDPRESS_URL}/wp-json/wc/v3/products?slug=${slug}`;
+        console.log(`[WooCommerce] Fetching Product by Slug: ${url}`);
+
+        const res = await fetch(url, {
+            headers: {
+                'Authorization': getAuthHeader(),
+                'Content-Type': 'application/json',
+            },
+            next: { revalidate: 60 }, // Cache can be adjusted
+        });
+
+        if (!res.ok) {
+            console.error('WooCommerce Product (Slug) Error:', res.status, await res.text());
+            return null;
+        }
+
+        const data = await res.json();
+        console.log(`[WooCommerce Debug] Data received for slug ${slug}:`, data.length ? `${data.length} items` : data);
+        // The API returns an array for query lists, so we take the first match
+        if (data && data.length > 0) {
+            return data[0] as Product;
+        }
+
+        return null;
+    } catch (error) {
+        console.error('Failed to fetch product by slug:', error);
         return null;
     }
 }

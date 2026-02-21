@@ -9,6 +9,7 @@ import { useCart } from '@/context/CartContext';
 interface ProductProps {
     id: string;
     name: string;
+    slug: string;
     price: number;
     image: string;
     category: string;
@@ -55,7 +56,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
             <div className={styles.info}>
                 <span className={styles.category}>{product.category}</span>
                 <h3 className={styles.name}>
-                    <Link href={`/producto/${product.id}`}>
+                    <Link href={`/producto/${product.slug}`}>
                         {product.name}
                     </Link>
                 </h3>

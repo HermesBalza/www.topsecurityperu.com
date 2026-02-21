@@ -1,4 +1,4 @@
-import { getProductById } from '@/lib/woocommerce';
+import { getProductBySlug } from '@/lib/woocommerce';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -6,15 +6,15 @@ import styles from './page.module.css';
 import { Metadata, ResolvingMetadata } from 'next';
 
 interface Props {
-    params: Promise<{ id: string }>;
+    params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata(
     { params }: Props,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-    const { id } = await params;
-    const product = await getProductById(id);
+    const { slug } = await params;
+    const product = await getProductBySlug(slug);
 
     if (!product) {
         return {
@@ -39,8 +39,8 @@ import ProductDetailClient from '@/components/shop/ProductDetailClient';
 import ProductCategoryRow from '@/components/home/ProductCategoryRow';
 
 export default async function ProductPage({ params }: Props) {
-    const { id } = await params;
-    const product = await getProductById(id);
+    const { slug } = await params;
+    const product = await getProductBySlug(slug);
 
     if (!product) {
         notFound();

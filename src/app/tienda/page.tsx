@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default async function ShopPage() {
-    const products = await getProducts(20); // Fetch top 20 products
+    const products = await getProducts({ perPage: 20 }); // Fetch top 20 products
 
     // Safe array check
     const productList = Array.isArray(products) ? products : [];
@@ -34,6 +34,7 @@ export default async function ShopPage() {
                                 product={{
                                     id: String(product.id),
                                     name: product.name,
+                                    slug: product.slug,
                                     price: parseFloat(product.price || '0'),
                                     image: product.images[0]?.src || '',
                                     category: product.categories[0]?.name || 'Seguridad'
