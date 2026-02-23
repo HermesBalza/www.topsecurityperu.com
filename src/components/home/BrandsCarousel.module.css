@@ -42,14 +42,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.6;
-    filter: grayscale(100%);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .imageWrapper:hover {
-    opacity: 1;
-    filter: grayscale(0%);
     transform: scale(1.1);
 }
 

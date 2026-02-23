@@ -59,6 +59,7 @@ export default async function ProductPage({ params }: Props) {
                         categoryIds={categoryIds}
                         excludeIds={product.id.toString()}
                         limit={5}
+                        columns={5}
                     />
                 </div>
             )}

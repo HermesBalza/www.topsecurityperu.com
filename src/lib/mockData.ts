@@ -91,10 +91,12 @@ export const MOCK_PRODUCTS = [
 ];
 
 export const BRANDS = [
-    { name: 'Hikvision', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Hikvision_logo.svg/2560px-Hikvision_logo.svg.png' },
-    { name: 'Dahua', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Dahua_Technology_logo.svg/2560px-Dahua_Technology_logo.svg.png' },
-    { name: 'ZKTeco', logo: 'https://www.zkteco.com/uploads/allimg/190703/1-1ZF3143G3.png' },
-    { name: 'Ezviz', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Ezviz_logo.svg/1200px-Ezviz_logo.svg.png' },
-    { name: 'Western Digital', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Western_Digital_Logo.svg/2560px-Western_Digital_Logo.svg.png' },
-    { name: 'Seagate', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Seagate_Technology_logo.svg/2560px-Seagate_Technology_logo.svg.png' }
+    { name: 'Dahua', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-Dahua.png' },
+    { name: 'Ezviz', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-EZVIZ.png' },
+    { name: 'Hikvision', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-HIKVISION.png' },
+    { name: 'HiLook', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-Hilook.png' },
+    { name: 'SafeMaxTech', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-SAFEMAXtech.png' },
+    { name: 'ZKTeco', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-ZKTeco.png' },
+    { name: 'Seagate', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-Seagate.png' },
+    { name: 'Western Digital', logo: 'https://www.topsecurityperu.com/wp-content/uploads/2026/02/Logo-Western-Digital.png' }
 ];

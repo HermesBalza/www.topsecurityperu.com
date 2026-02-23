@@ -50,9 +50,11 @@
 }
 
 @media (min-width: 1024px) {
-    .grid {
+    .grid5 {
         grid-template-columns: repeat(5, 1fr) !important;
-        /* Estricto 5 columnas en una línea para Detalles de Producto */
+    }
+    .grid6 {
+        grid-template-columns: repeat(6, 1fr) !important;
     }
 }
 

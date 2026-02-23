@@ -8,9 +8,10 @@ interface ProductCategoryRowProps {
     categoryIds: string; // "78,80,81"
     excludeIds?: string; // "87"
     limit?: number;
+    columns?: 5 | 6; // Nivel Dios: Independencia de grilla
 }
 
-export default async function ProductCategoryRow({ title, categoryIds, excludeIds, limit = 4 }: ProductCategoryRowProps) {
+export default async function ProductCategoryRow({ title, categoryIds, excludeIds, limit = 4, columns = 6 }: ProductCategoryRowProps) {
     // Fetch real products
     // Nota: getProducts debe soportar 'category' como string de IDs separados por comas
     let products = await getProducts({
@@ -43,7 +44,7 @@ export default async function ProductCategoryRow({ title, categoryIds, excludeId
                 </Link>
             </div>
 
-            <div className={styles.grid}>
+            <div className={`${styles.grid} ${columns === 5 ? styles.grid5 : styles.grid6}`}>
                 {products.map((product) => (
                     <ProductCard
                         key={product.id}
