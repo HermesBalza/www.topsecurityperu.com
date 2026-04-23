@@ -71,7 +71,7 @@ export default function Footer() {
                         © {currentYear} Top Security Perú. Todos los derechos reservados.
                     </p>
                     <p className={styles.credits}>
-                        Desarrollado con <span style={{ color: 'var(--color-primary)' }}>♥</span> y Tecnología de Punta
+                        Desarrollado por <strong>Hermes Balza</strong>
                     </p>
                 </div>
             </div>
