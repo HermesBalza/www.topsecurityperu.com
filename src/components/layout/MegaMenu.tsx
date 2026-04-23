@@ -13,73 +13,72 @@ interface MegaMenuProps {
 const categories = [
     {
         id: 'cctv',
-        name: 'Cámaras de Seguridad', // Title Case looks better for "normal" size
+        name: 'Cámaras de Seguridad',
         image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop',
-        link: '/tienda?category=cctv',
+        link: '/tienda?category=77',
         subcategories: [
-            { name: 'Cámaras IP', link: '/tienda?cat=cctv&sub=ip' },
-            { name: 'Cámaras Analógicas', link: '/tienda?cat=cctv&sub=analog' },
-            { name: 'Grabadores DVR/NVR', link: '/tienda?cat=cctv&sub=recorders' },
-            { name: 'Kits de Vigilancia', link: '/tienda?cat=cctv&sub=kits' },
-            { name: 'Accesorios', link: '/tienda?cat=cctv&sub=accessories' }
+            { name: 'Cámaras IP', link: '/tienda?category=78' },
+            { name: 'Cámaras Analógicas', link: '/tienda?category=80' },
+            { name: 'Grabadores DVR/NVR', link: '/tienda?category=81,79' },
+            { name: 'Kits de Vigilancia', link: '/tienda?category=75' },
+            { name: 'Accesorios', link: '/tienda?category=89' }
         ]
     },
     {
         id: 'access',
         name: 'Control de Acceso y Asistencia',
         image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070&auto=format&fit=crop',
-        link: '/tienda?category=access',
+        link: '/tienda?category=82',
         subcategories: [
-            { name: 'Biométricos', link: '/tienda?cat=access&sub=bio' },
-            { name: 'Tarjetas de Proximidad', link: '/tienda?cat=access&sub=cards' },
-            { name: 'Cerraduras Electromagnéticas', link: '/tienda?cat=access&sub=locks' },
-            { name: 'Torniquetes', link: '/tienda?cat=access&sub=turnstiles' }
+            { name: 'Biométricos', link: '/tienda?category=84' },
+            { name: 'Tarjetas de Proximidad', link: '/tienda?category=240' },
+            { name: 'Cerraduras Electromecánicas', link: '/tienda?category=235' },
+            { name: 'Torniquetes y Barreras', link: '/tienda?category=239' }
         ]
     },
     {
         id: 'alarms',
         name: 'Alarmas',
         image: 'https://images.unsplash.com/photo-1558002038-1091a166111c?q=80&w=2070&auto=format&fit=crop',
-        link: '/tienda?category=alarms',
+        link: '/tienda?category=85',
         subcategories: [
-            { name: 'Paneles de Alarma', link: '/tienda?cat=alarms&sub=panels' },
-            { name: 'Sensores de Movimiento', link: '/tienda?cat=alarms&sub=sensors' },
-            { name: 'Sirenas', link: '/tienda?cat=alarms&sub=sirens' },
-            { name: 'Detectores de Humo', link: '/tienda?cat=alarms&sub=smoke' }
+            { name: 'Sistemas de Alarma', link: '/tienda?category=85' },
+            { name: 'Alarmas Comunitarias', link: '/tienda?category=197' },
+            { name: 'Sensores y Sirenas', link: '/tienda?category=85' }
         ]
     },
     {
         id: 'videophone',
         name: 'Videoporteros',
         image: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?q=80&w=2070&auto=format&fit=crop',
-        link: '/tienda?category=videophone',
+        link: '/tienda?category=86',
         subcategories: [
-            { name: 'Kits Unifamiliares', link: '/tienda?cat=videophone&sub=single' },
-            { name: 'Sistemas Edificios', link: '/tienda?cat=videophone&sub=multi' },
-            { name: 'Porteros IP', link: '/tienda?cat=videophone&sub=ip' }
+            { name: 'Intercomunicadores', link: '/tienda?category=209' },
+            { name: 'Sistemas IP', link: '/tienda?category=86' },
+            { name: 'Kits Residenciales', link: '/tienda?category=86' }
         ]
     },
     {
         id: 'networks',
         name: 'Redes',
-        image: 'https://images.unsplash.com/photo-1544197150-b99a580bbcbf?q=80&w=2071&auto=format&fit=crop', // Server/Network
-        link: '/tienda?category=networks',
+        image: 'https://images.unsplash.com/photo-1544197150-b99a580bbcbf?q=80&w=2071&auto=format&fit=crop',
+        link: '/tienda?category=241',
         subcategories: [
-            { name: 'Switches', link: '/tienda?cat=networks&sub=switches' },
-            { name: 'Routers', link: '/tienda?cat=networks&sub=routers' },
-            { name: 'Cableado Estructurado', link: '/tienda?cat=networks&sub=cabling' },
-            { name: 'Racks y Gabinetes', link: '/tienda?cat=networks&sub=racks' }
+            { name: 'Switches', link: '/tienda?category=88' },
+            { name: 'Routers WIFI', link: '/tienda?category=242' },
+            { name: 'Cableado y Conectividad', link: '/tienda?category=244' },
+            { name: 'Racks y Gabinetes', link: '/tienda?category=243' }
         ]
     },
     {
         id: 'telephony',
         name: 'Telefonía IP',
-        image: 'https://images.unsplash.com/photo-1587573578202-b271d471b40d?q=80&w=2070&auto=format&fit=crop', // VoIP Phone
-        link: '/tienda?category=telephony',
+        image: 'https://images.unsplash.com/photo-1587573578202-b271d471b40d?q=80&w=2070&auto=format&fit=crop',
+        link: '/tienda?category=92',
         subcategories: [
-            { name: 'Teléfonos IP', link: '/tienda?cat=telephony&sub=phones' },
-            { name: 'Centrales Telefónicas', link: '/tienda?cat=telephony&sub=pbx' },
-            { name: 'Diademas', link: '/tienda?cat=telephony&sub=headsets' }
+            { name: 'Teléfonos IP', link: '/tienda?category=92' },
+            { name: 'Centrales IP', link: '/tienda?category=92' },
+            { name: 'Accesorios VoIP', link: '/tienda?category=92' }
         ]
     }
 ];
