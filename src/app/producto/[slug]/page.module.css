@@ -1,0 +1,145 @@
+.container {
+    padding: 4rem 1rem;
+    background-color: var(--color-bg);
+    min-height: 80vh;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--color-gray-med);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--color-gray-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: var(--color-primary);
+}
+
+.current {
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 900px) {
+    .grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 5rem;
+    }
+}
+
+/* Gallery */
+.mainImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    /* Square */
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.thumbnails {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: white;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.thumb:hover {
+    border-color: var(--color-primary);
+}
+
+/* Info */
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.category {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.prices {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.oldPrice {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    color: var(--color-gray-med);
+}
+
+.description {
+    color: var(--color-gray-light);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 0;
+}
+
+.meta {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-med);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.meta span {
+    color: var(--color-white);
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.stock {
+    color: #00e676 !important;
+    /* Success Green */
+}
