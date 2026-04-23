@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getProducts, getCategories } from '@/lib/woocommerce';
-import ProductCard from '@/components/shop/ProductCard';
 import CategorySidebar from '@/components/shop/CategorySidebar';
+import ProductGridClient from '@/components/shop/ProductGridClient';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -18,12 +18,20 @@ export default async function ShopPage({
 
     // Parallel fetch for better performance
     const [products, categories] = await Promise.all([
-        getProducts({ perPage: 20, category: categoryId }),
+        getProducts({ perPage: 20, page: 1, category: categoryId }),
         getCategories()
     ]);
 
     // Safe array checks
-    const productList = Array.isArray(products) ? products : [];
+    const initialProducts = Array.isArray(products) ? products.map(product => ({
+        id: String(product.id),
+        name: product.name,
+        slug: product.slug,
+        price: parseFloat(product.price || '0'),
+        image: product.images[0]?.src || '',
+        category: product.categories[0]?.name || 'Seguridad'
+    })) : [];
+    
     const categoryList = Array.isArray(categories) ? categories : [];
 
     return (
@@ -40,22 +48,11 @@ export default async function ShopPage({
 
                     {/* Main Content */}
                     <div className={styles.contentWrapper}>
-                        {productList.length > 0 ? (
-                            <div className={styles.grid}>
-                                {productList.map((product) => (
-                                    <ProductCard
-                                        key={product.id}
-                                        product={{
-                                            id: String(product.id),
-                                            name: product.name,
-                                            slug: product.slug,
-                                            price: parseFloat(product.price || '0'),
-                                            image: product.images[0]?.src || '',
-                                            category: product.categories[0]?.name || 'Seguridad'
-                                        }}
-                                    />
-                                ))}
-                            </div>
+                        {initialProducts.length > 0 ? (
+                            <ProductGridClient 
+                                initialProducts={initialProducts} 
+                                categoryId={categoryId} 
+                            />
                         ) : (
                             <div className={styles.emptyState}>
                                 <p>No se encontraron productos en esta categoría.</p>
