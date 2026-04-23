@@ -1,0 +1,128 @@
+.sidebar {
+    width: 100%;
+    padding-right: var(--space-lg);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--color-primary);
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.categoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.categoryItem {
+    width: 100%;
+}
+
+.categoryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.categoryHeader:hover .catName {
+    color: var(--color-primary);
+}
+
+.catLink {
+    text-decoration: none;
+    color: var(--color-gray-dark);
+    font-size: 0.85rem;
+    font-weight: 500;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.catLink.active {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.catName {
+    transition: color 0.2s ease;
+}
+
+.count {
+    font-size: 0.75rem;
+    color: var(--color-gray-med);
+    margin-left: 0.5rem;
+}
+
+.toggleBtn {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--color-gray-med);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.toggleBtn.open {
+    transform: rotate(90deg);
+}
+
+.subList {
+    list-style: none;
+    padding: 0 0 0 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+}
+
+.subList.open {
+    max-height: 1000px; /* Adjust as needed */
+    padding-bottom: 0.5rem;
+}
+
+.subItem {
+    padding: 0.25rem 0;
+}
+
+.subLink {
+    text-decoration: none;
+    color: var(--color-gray-med);
+    font-size: 0.8rem;
+    transition: color 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subLink:hover, .subLink.active {
+    color: var(--color-primary);
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        padding-right: 0;
+        border-right: none;
+        margin-bottom: var(--space-xl);
+    }
+}
