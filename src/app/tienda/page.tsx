@@ -8,8 +8,13 @@ export const metadata = {
     description: 'Catálogo completo de sistemas de seguridad, cámaras y control de acceso.',
 };
 
-export default async function ShopPage() {
-    const products = await getProducts({ perPage: 20 }); // Fetch top 20 products
+export default async function ShopPage({
+    searchParams,
+}: {
+    searchParams: Promise<{ category?: string }>;
+}) {
+    const { category: categoryId } = await searchParams;
+    const products = await getProducts({ perPage: 20, category: categoryId });
 
     // Safe array check
     const productList = Array.isArray(products) ? products : [];
