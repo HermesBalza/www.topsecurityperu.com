@@ -183,16 +183,18 @@
 
 /* --- 3. BOTTOM NAV (Negro) --- */
 .bottomNav {
+    --nav-height: 42px;
     background-color: var(--color-dark);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    height: var(--nav-height) !important;
 }
 
 .navContainer {
     display: flex;
     justify-content: flex-start;
-    /* Cambio a flex-start para acomodar el boton a la izquierda */
     align-items: center;
     gap: 3rem;
+    height: 100%;
 }
 
 .menuTrigger {
@@ -200,7 +202,7 @@
     /* Rojo llamativo */
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0 2rem;
     font-size: 0.95rem;
     font-weight: 800;
     cursor: pointer;
@@ -211,7 +213,10 @@
     letter-spacing: 0.1em;
     transition: background-color 0.3s;
     height: 100%;
-    /* Llenar altura */
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    line-height: 1;
 }
 
 .menuTrigger:hover {
@@ -223,9 +228,17 @@
     display: flex;
     list-style: none;
     gap: 3rem;
-    padding: 1rem 0;
+    padding: 0;
     margin: 0;
+    height: 100%;
 }
+
+.navLinks li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 
 .navLinks a {
     color: var(--color-white);
@@ -236,11 +249,23 @@
     text-transform: uppercase;
     transition: color 0.3s;
     position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    line-height: 1;
 }
 
-.navLinks a:hover {
-    color: var(--color-primary);
+
+
+.navLinks a:hover,
+.navLinks a.activeLink {
+    color: var(--color-primary) !important;
 }
+
+.navLinks a.activeLink::after {
+    width: 100%;
+}
+
 
 /* Indicador de hover sutil */
 .navLinks a::after {
