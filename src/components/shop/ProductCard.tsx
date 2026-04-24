@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './ProductCard.module.css';
 
+import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 
 interface ProductProps {
@@ -17,8 +18,10 @@ interface ProductProps {
 
 export default function ProductCard({ product }: { product: ProductProps }) {
     const { addItem } = useCart();
+    const router = useRouter();
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Evitar que el clic se propague a la tarjeta
         addItem({
             id: product.id,
             name: product.name,
@@ -28,8 +31,12 @@ export default function ProductCard({ product }: { product: ProductProps }) {
         });
     };
 
+    const handleCardClick = () => {
+        router.push(`/producto/${product.slug}`);
+    };
+
     return (
-        <article className={styles.card}>
+        <article className={styles.card} onClick={handleCardClick}>
             <div className={styles.imageContainer}>
                 {product.image ? (
                     <Image
@@ -47,18 +54,16 @@ export default function ProductCard({ product }: { product: ProductProps }) {
                     </div>
                 )}
                 <div className={styles.overlay}>
-                    <Link href={`/producto/${product.id}`} className={styles.viewBtn}>
+                    <span className={styles.viewBtn}>
                         Ver Detalles
-                    </Link>
+                    </span>
                 </div>
             </div>
 
             <div className={styles.info}>
                 <span className={styles.category}>{product.category}</span>
                 <h3 className={styles.name}>
-                    <Link href={`/producto/${product.slug}`}>
-                        {product.name}
-                    </Link>
+                    {product.name}
                 </h3>
                 <div className={styles.bottom}>
                     <span className={styles.price}>S/ {product.price.toFixed(2)}</span>
