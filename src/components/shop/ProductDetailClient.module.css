@@ -307,11 +307,8 @@
 }
 
 .trustIcon {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     color: var(--color-primary);
-    background: rgba(var(--color-primary-rgb), 0.1);
-    padding: 0.8rem;
-    border-radius: 50%;
     margin-bottom: 0.5rem;
 }
 
