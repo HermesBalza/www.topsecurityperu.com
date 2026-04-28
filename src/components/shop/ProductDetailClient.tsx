@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaWhatsapp, FaShoppingCart, FaShieldAlt, FaTruck, FaHeadset, FaMinus, FaPlus } from 'react-icons/fa';
+import { FaWhatsapp, FaShoppingCart, FaAward, FaTruck, FaMotorcycle, FaMinus, FaPlus } from 'react-icons/fa';
 import styles from './ProductDetailClient.module.css';
 import { Product } from '@/lib/woocommerce';
 
@@ -179,7 +179,7 @@ export default function ProductDetailClient({ product }: Props) {
                     {/* Trust Badges */}
                     <div className={styles.trustBadges}>
                         <div className={styles.trustItem}>
-                            <FaShieldAlt className={styles.trustIcon} />
+                            <FaAward className={styles.trustIcon} />
                             <span className={styles.trustText}>Garantía<br />Oficial</span>
                         </div>
                         <div className={styles.trustItem}>
@@ -187,7 +187,7 @@ export default function ProductDetailClient({ product }: Props) {
                             <span className={styles.trustText}>Envíos a<br />Todo Perú</span>
                         </div>
                         <div className={styles.trustItem}>
-                            <FaHeadset className={styles.trustIcon} />
+                            <FaMotorcycle className={styles.trustIcon} />
                             <span className={styles.trustText}>Delivery a<br />Todo Lima</span>
                         </div>
                     </div>

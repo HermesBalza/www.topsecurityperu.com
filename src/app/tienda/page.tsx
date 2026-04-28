@@ -12,13 +12,13 @@ export const metadata = {
 export default async function ShopPage({
     searchParams,
 }: {
-    searchParams: Promise<{ category?: string }>;
+    searchParams: Promise<{ category?: string; search?: string }>;
 }) {
-    const { category: categoryId } = await searchParams;
+    const { category: categoryId, search: searchQuery } = await searchParams;
 
     // Parallel fetch for better performance
     const [products, categories] = await Promise.all([
-        getProducts({ perPage: 20, page: 1, category: categoryId }),
+        getProducts({ perPage: 20, page: 1, category: categoryId, search: searchQuery }),
         getCategories()
     ]);
 
@@ -55,7 +55,11 @@ export default async function ShopPage({
                             />
                         ) : (
                             <div className={styles.emptyState}>
-                                <p>No se encontraron productos en esta categoría.</p>
+                                <p>
+                                    {searchQuery 
+                                        ? `No se encontraron productos para "${searchQuery}".` 
+                                        : "No se encontraron productos en esta categoría."}
+                                </p>
                                 <Link href="/tienda" className="btn-primary">Ver todos los productos</Link>
                             </div>
                         )}

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from './Navbar.module.css';
 import { useCart } from '@/context/CartContext';
 import MegaMenu from './MegaMenu';
+import SearchBar from './SearchBar';
 import { usePathname } from 'next/navigation';
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaSearch, FaUser, FaHeart, FaShoppingCart, FaBars, FaTh } from 'react-icons/fa';
 
@@ -70,16 +71,7 @@ export default function Navbar() {
                         </div>
 
                         {/* Search Bar "Global" */}
-                        <div className={styles.searchBar}>
-                            <input
-                                type="text"
-                                placeholder="Buscar productos..."
-                                className={styles.searchInput}
-                            />
-                            <button className={styles.searchBtn} aria-label="Buscar">
-                                <FaSearch />
-                            </button>
-                        </div>
+                        <SearchBar />
 
                         {/* User Actions */}
                         <div className={styles.userActions}>
@@ -105,6 +97,31 @@ export default function Navbar() {
                     </div>
                 </div>
 
+                {/* 3. BOTTOM NAVIGATION (RECONSTRUIDA - EDITABLE) */}
+                <nav className={styles.bottomNav}>
+                    <div className={`container ${styles.navContainer}`}>
+                        {/* Botón Productos con diseño distintivo */}
+                        <button
+                            className={styles.menuTrigger}
+                            onClick={() => setIsMenuOpen(true)}
+                        >
+                            <FaTh /> PRODUCTOS
+                        </button>
+
+                        <ul className={styles.navLinks}>
+                            {NAV_LINKS.map((link) => (
+                                <li key={link.path}>
+                                    <Link 
+                                        href={link.path} 
+                                        className={isActive(link.path) ? styles.activeLink : ''}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </nav>
             </header>
 
             {/* Render MegaMenu Overlay */}

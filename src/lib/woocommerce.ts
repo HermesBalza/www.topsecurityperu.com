@@ -38,14 +38,17 @@ interface FetchProductsParams {
     page?: number;
     category?: string; // Comma separated IDs
     exclude?: string; // Comma separated IDs to exclude
+    search?: string;   // Search term
 }
 
-export async function getProducts({ perPage = 10, page = 1, category, exclude }: FetchProductsParams = {}): Promise<Product[]> {
+export async function getProducts({ perPage = 10, page = 1, category, exclude, search }: FetchProductsParams = {}): Promise<Product[]> {
     try {
         let url = `${WORDPRESS_URL}/wp-json/wc/v3/products?per_page=${perPage}&page=${page}&status=publish`;
 
         if (category) url += `&category=${category}`;
-        if (exclude) url += `&exclude=${exclude}`; // Ojo: API WC usa 'exclude' para IDs de productos, no categorías. Para excluir categorías la API estándar no tiene param directo simple, a veces se usa 'category_exclude' depende de la versión o plugin. 
+        if (exclude) url += `&exclude=${exclude}`;
+        if (search) url += `&search=${encodeURIComponent(search)}`;
+ // Ojo: API WC usa 'exclude' para IDs de productos, no categorías. Para excluir categorías la API estándar no tiene param directo simple, a veces se usa 'category_exclude' depende de la versión o plugin. 
         // Corrección: La API v3 de WC tiene 'category' para incluir. Para excluir productos de una categoría específica, se suele filtrar post-fetch o usar un param personalizado si existe.
         // Sin embargo, si pedimos productos de categorías X, Y, Z explícitamente, no necesitamos excluir nada si la categoría 'wifi' no está en la lista. 
         // El problema es que si pido la categoría 'Camaras IP' (padre), me traerá las 'Wifi' (hija).
