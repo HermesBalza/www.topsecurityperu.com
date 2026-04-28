@@ -6,14 +6,29 @@ import Image from 'next/image';
 import styles from './Navbar.module.css';
 import { useCart } from '@/context/CartContext';
 import MegaMenu from './MegaMenu';
+import { usePathname } from 'next/navigation';
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaSearch, FaUser, FaHeart, FaShoppingCart, FaBars, FaTh } from 'react-icons/fa';
 
 export default function Navbar() {
     const { toggleCart, totalItems, totalPrice } = useCart();
     const [mounted, setMounted] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for MegaMenu
+    const pathname = usePathname();
 
     useEffect(() => setMounted(true), []);
+
+    // Helper to check if a link is active
+    const isActive = (path: string) => pathname === path;
+
+    // Data structure for easy editing
+    const NAV_LINKS = [
+        { label: 'INICIO', path: '/' },
+        { label: 'NOSOTROS', path: '/nosotros' },
+        { label: 'TIENDA', path: '/tienda' },
+        { label: 'SERVICIOS', path: '/servicios' },
+        { label: 'BLOG', path: '/blog' },
+        { label: 'CONTACTO', path: '/contacto' },
+    ];
 
     return (
         <>
@@ -90,27 +105,6 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* 3. BOTTOM NAVIGATION (Negro) */}
-                <nav className={styles.bottomNav}>
-                    <div className={`container ${styles.navContainer}`}>
-                        {/* MEGA MENU TRIGGER */}
-                        <button
-                            className={styles.menuTrigger}
-                            onClick={() => setIsMenuOpen(true)}
-                        >
-                            <FaTh /> PRODUCTOS
-                        </button>
-
-                        <ul className={styles.navLinks}>
-                            <li><Link href="/">INICIO</Link></li>
-                            <li><Link href="/nosotros">NOSOTROS</Link></li>
-                            <li><Link href="/tienda">TIENDA</Link></li>
-                            <li><Link href="/servicios">SERVICIOS</Link></li>
-                            <li><Link href="/blog">BLOG</Link></li>
-                            <li><Link href="/contacto">CONTACTO</Link></li>
-                        </ul>
-                    </div>
-                </nav>
             </header>
 
             {/* Render MegaMenu Overlay */}
