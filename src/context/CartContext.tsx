@@ -54,11 +54,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
             if (existingItem) {
                 return currentItems.map((item) =>
                     item.id === newItem.id
-                        ? { ...item, quantity: item.quantity + 1 }
+                        ? { ...item, quantity: item.quantity + newItem.quantity }
                         : item
                 );
             }
-            return [...currentItems, { ...newItem, quantity: 1 }];
+            return [...currentItems, newItem];
         });
         setIsOpen(true); // Open cart when adding
     };

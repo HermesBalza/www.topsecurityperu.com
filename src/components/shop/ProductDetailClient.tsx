@@ -6,12 +6,14 @@ import Link from 'next/link';
 import { FaWhatsapp, FaShoppingCart, FaAward, FaTruck, FaMotorcycle, FaMinus, FaPlus } from 'react-icons/fa';
 import styles from './ProductDetailClient.module.css';
 import { Product } from '@/lib/woocommerce';
+import { useCart } from '@/context/CartContext';
 
 interface Props {
     product: Product;
 }
 
 export default function ProductDetailClient({ product }: Props) {
+    const { addItem } = useCart();
     const [selectedImage, setSelectedImage] = useState(product.images?.[0] || null);
     const [quantity, setQuantity] = useState(1);
     const [isZoomed, setIsZoomed] = useState(false);
@@ -38,6 +40,16 @@ export default function ProductDetailClient({ product }: Props) {
     // Helper to strip HTML tags from description
     const stripHtml = (html: string) => {
         return html.replace(/<[^>]*>?/gm, '');
+    };
+
+    const handleAddToCart = () => {
+        addItem({
+            id: product.id.toString(),
+            name: product.name,
+            price: parseFloat(product.price || '0'),
+            image: product.images?.[0]?.src || '',
+            quantity: quantity
+        });
     };
 
     return (
@@ -169,7 +181,7 @@ export default function ProductDetailClient({ product }: Props) {
                                 <FaWhatsapp size={20} />
                                 CONSULTAR
                             </a>
-                            <button className={styles.btnPrimary}>
+                            <button className={styles.btnPrimary} onClick={handleAddToCart}>
                                 <FaShoppingCart size={18} />
                                 AÑADIR AL CARRITO
                             </button>

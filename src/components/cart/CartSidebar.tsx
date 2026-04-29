@@ -4,6 +4,7 @@ import { useCart } from '@/context/CartContext';
 import styles from './CartSidebar.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaTrash } from 'react-icons/fa';
 
 export default function CartSidebar() {
     const { items, isOpen, toggleCart, removeItem, totalPrice } = useCart();
@@ -55,8 +56,9 @@ export default function CartSidebar() {
                                 <button
                                     onClick={() => removeItem(item.id)}
                                     className={styles.removeBtn}
+                                    title="Eliminar producto"
                                 >
-                                    Eliminar
+                                    <FaTrash size={18} />
                                 </button>
                             </div>
                         ))
@@ -69,8 +71,7 @@ export default function CartSidebar() {
                         <span>S/ {totalPrice.toFixed(2)}</span>
                     </div>
                     <button
-                        className="btn btn-primary"
-                        style={{ width: '100%' }}
+                        className={styles.checkoutBtn}
                         onClick={handleCheckout}
                         disabled={items.length === 0}
                     >
