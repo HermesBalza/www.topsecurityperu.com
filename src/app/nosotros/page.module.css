@@ -1,0 +1,205 @@
+.container {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    min-height: 100vh;
+}
+
+.hero {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/about/hero_about.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, var(--color-dark), transparent);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1000px;
+    padding: 0 1.5rem;
+}
+
+.heroContent h1 {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--color-white);
+    text-shadow: 0 0 30px rgba(181, 18, 19, 0.8);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.heroContent p {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.section {
+    padding: 8rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dnaSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.dnaImage {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-glow);
+    border: 1px solid rgba(181, 18, 19, 0.3);
+}
+
+.dnaText h2 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+.dnaText p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-gray-light);
+    margin-bottom: 1.5rem;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.statItem {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.statItem:hover {
+    background: rgba(181, 18, 19, 0.05);
+    border-color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+.statNumber {
+    display: block;
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.statLabel {
+    font-size: 1rem;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.partnersSection {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 6rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.partnersSection h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+}
+
+.partnersGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    align-items: center;
+    opacity: 0.7;
+    filter: grayscale(1);
+    transition: all 0.5s ease;
+}
+
+.partnersGrid:hover {
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+.partnerLogo {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-white);
+    letter-spacing: -0.05em;
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.valueCard {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.valueCard h3 {
+    margin-bottom: 1rem;
+    color: var(--color-white);
+}
+
+.valueCard p {
+    color: var(--color-gray-light);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .dnaSection {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+    }
+    
+    .partnersGrid {
+        gap: 2rem;
+    }
+}

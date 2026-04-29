@@ -1,0 +1,223 @@
+.container {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    min-height: 100vh;
+}
+
+.hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/services/hero_tech.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, var(--color-dark), transparent);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 1.5rem;
+}
+
+.heroContent h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--color-white);
+    text-shadow: 0 0 20px rgba(181, 18, 19, 0.6);
+    margin-bottom: 1rem;
+}
+
+.heroContent p {
+    font-size: 1.25rem;
+    color: var(--color-gray-light);
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.section {
+    padding: 6rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.introGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.introText h2 {
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+.introText p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-gray-light);
+    margin-bottom: 1.5rem;
+}
+
+.introImage {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-glow);
+    border: 1px solid rgba(181, 18, 19, 0.3);
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.serviceCard {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.serviceCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: var(--color-primary);
+    transition: height 0.4s ease;
+}
+
+.serviceCard:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.serviceCard:hover::before {
+    height: 100%;
+}
+
+.serviceIcon {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+.serviceCard h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.serviceCard p {
+    color: var(--color-gray-light);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.sectorsSection {
+    background: linear-gradient(rgba(21, 21, 29, 0.9), rgba(21, 21, 29, 0.9)), url('/images/services/sectors_tech.png');
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 1.5rem;
+    text-align: center;
+}
+
+.sectorsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.sectorItem {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+.sectorItem:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.sectorItem h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+}
+
+.ctaSection {
+    padding: 6rem 1.5rem;
+    text-align: center;
+    background: var(--color-dark);
+}
+
+.ctaBox {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem;
+    background: linear-gradient(135deg, rgba(181, 18, 19, 0.1) 0%, rgba(0,0,0,0) 100%);
+    border: 1px solid rgba(181, 18, 19, 0.3);
+    border-radius: var(--radius-lg);
+}
+
+.ctaBox h2 {
+    margin-bottom: 1.5rem;
+}
+
+.ctaBox p {
+    margin-bottom: 2.5rem;
+    color: var(--color-gray-light);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+    .introGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sectorsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+    
+    .sectorsGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ctaBox {
+        padding: 2rem;
+    }
+}
