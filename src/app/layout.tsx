@@ -5,6 +5,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/cart/CartSidebar";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import CatalogButton from "@/components/layout/CatalogButton";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -68,6 +70,8 @@ export default function RootLayout({
           {children}
           <Footer />
           <CartSidebar />
+          <WhatsAppButton />
+          <CatalogButton />
         </CartProvider>
       </body>
     </html>

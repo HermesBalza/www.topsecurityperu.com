@@ -1,0 +1,41 @@
+.catalogFloat {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 15px rgba(181, 18, 19, 0.3);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.catalogFloat:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(181, 18, 19, 0.5);
+    background: var(--color-primary);
+}
+
+.catalogIcon {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .catalogFloat {
+        bottom: 20px;
+        left: 20px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
