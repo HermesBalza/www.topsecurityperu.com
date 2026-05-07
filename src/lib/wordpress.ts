@@ -22,6 +22,9 @@ export interface WordPressPost {
         'author'?: Array<{
             name: string;
         }>;
+        'wp:term'?: Array<Array<{
+            name: string;
+        }>>;
     };
 }
 
