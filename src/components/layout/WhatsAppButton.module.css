@@ -18,6 +18,12 @@
     transition: all 0.3s ease;
 }
 
+:global(body.mega-menu-open) .whatsappFloat {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
 .whatsappFloat:hover {
     transform: scale(1.1);
     background-color: #128c7e;

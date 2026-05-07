@@ -91,9 +91,11 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
         if (isOpen) {
             setIsVisible(true);
             document.body.style.overflow = 'hidden';
+            document.body.classList.add('mega-menu-open');
         } else {
             const timer = setTimeout(() => setIsVisible(false), 500);
             document.body.style.overflow = 'unset';
+            document.body.classList.remove('mega-menu-open');
             return () => clearTimeout(timer);
         }
     }, [isOpen]);
@@ -165,10 +167,7 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                     </div>
                 </div>
 
-                {/* Footer of Overlay */}
-                <div className={styles.footer}>
-                    <p>TOP SECURITY PERÚ — Soluciones Integrales de Seguridad</p>
-                </div>
+
             </div>
         </div>
     );

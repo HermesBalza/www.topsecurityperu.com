@@ -21,6 +21,12 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+:global(body.mega-menu-open) .catalogFloat {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
 .catalogFloat:hover {
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 10px 25px rgba(181, 18, 19, 0.5);
