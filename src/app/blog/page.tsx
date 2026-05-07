@@ -28,7 +28,7 @@ export default async function BlogPage() {
             <section className={styles.section}>
                 <div className={styles.blogGrid}>
                     {posts.map((post) => {
-                        const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/images/blog/placeholder.jpg';
+                        const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop';
                         const date = new Date(post.date).toLocaleDateString('es-PE', {
                             day: 'numeric',
                             month: 'long',
