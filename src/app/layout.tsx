@@ -7,6 +7,8 @@ import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/cart/CartSidebar";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import CatalogButton from "@/components/layout/CatalogButton";
+import PageLoader from "@/components/layout/PageLoader";
+import { Suspense } from "react";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -72,6 +74,9 @@ export default function RootLayout({
           <CartSidebar />
           <WhatsAppButton />
           <CatalogButton />
+          <Suspense fallback={null}>
+            <PageLoader />
+          </Suspense>
         </CartProvider>
       </body>
     </html>
