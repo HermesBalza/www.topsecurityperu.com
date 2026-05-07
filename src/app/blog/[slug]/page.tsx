@@ -39,31 +39,28 @@ export default async function BlogPostPage({ params }: Props) {
 
     return (
         <article className={styles.articleContainer}>
-            {/* Header / Hero */}
-            <header className={styles.header}>
-                <Image 
-                    src={featuredImage} 
-                    alt={post.title.rendered}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    priority
-                />
-                <div className={styles.headerOverlay} />
-                <div className={styles.headerContent}>
-                    <div className="container">
-                        <span className={styles.meta}>
-                            <FaCalendarAlt /> {date} <span style={{ margin: '0 1rem', opacity: 0.5 }}>|</span> <FaUser /> {author}
-                        </span>
-                        <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                    </div>
-                </div>
-            </header>
-
             <div className="container">
                 <div className={styles.contentWrapper}>
                     <Link href="/blog" className={styles.backBtn}>
                         <FaArrowLeft /> VOLVER AL BLOG
                     </Link>
+
+                    <div className={styles.meta}>
+                        <FaCalendarAlt /> {date} <span style={{ margin: '0 0.5rem', opacity: 0.5 }}>|</span> <FaUser /> {author}
+                    </div>
+
+                    <div className={styles.mainImageWrapper}>
+                        <Image 
+                            src={featuredImage} 
+                            alt={post.title.rendered}
+                            width={1200}
+                            height={675}
+                            className={styles.mainImage}
+                            priority
+                        />
+                    </div>
+
+                    <h1 className={styles.articleTitle} dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                     
                     <div 
                         className={styles.content} 
